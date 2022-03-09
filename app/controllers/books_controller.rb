@@ -10,17 +10,18 @@ class BooksController < ApplicationController
     #保存出来たら、redirect先でflashでサクセスメッセージを出す。
     if book.save
       flash[:notice] = "Book was successfully created"
-      redirect_to "/books/show"
+      redirect_to book_path(book.id)
     else
       render "/books/index"
     end
   end
 
   def show
-    @book=Book.find(params[:id]
+    @book=Book.find(params[:id])
   end
 
   def edit
+    @book=Book.find(params{:id})
   end
 
   private #ストロングパラメータ
