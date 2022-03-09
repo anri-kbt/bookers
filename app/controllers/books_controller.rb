@@ -5,13 +5,14 @@ class BooksController < ApplicationController
   end
 
   def create
-    book=Book.new(book_params)
-    book.save
+    @book=Book.new(book_params)
+    @books=Book.all
+    #book.save
     #保存出来たら、redirect先でflashでサクセスメッセージを出す。
-    if book.save
-      redirect_to book_path(book.id), notice:"Book was successfully created"
+    if @book.save
+      redirect_to book_path(@book.id), notice:"Book was successfully created."
     else
-      render "/books/index"
+      render :index
     end
   end
 
@@ -24,9 +25,13 @@ class BooksController < ApplicationController
   end
 
   def update
-    book=Book.find(params[:id])
-    book.update(book_params)
-    redirect_to book_path(book.id)
+    @book=Book.find(params[:id])
+    @book.update(book_params)
+    if @book.update
+      redirect_to book_path(@book.id),notice:"Book was successfully updated."
+    else
+      render :edit
+    end
   end
 
   def destroy
