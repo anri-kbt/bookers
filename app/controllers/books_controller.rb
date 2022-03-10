@@ -7,7 +7,7 @@ class BooksController < ApplicationController
   def create
     @book=Book.new(book_params)
     @books=Book.all
-    #book.save
+    @book.save
     #保存出来たら、redirect先でflashでサクセスメッセージを出す。
     if @book.save
       redirect_to book_path(@book.id), notice:"Book was successfully created."
@@ -26,8 +26,8 @@ class BooksController < ApplicationController
 
   def update
     @book=Book.find(params[:id])
-    @book.update(book_params)
-    if @book.update
+    #@book.update(book_params)
+    if @book.update(book_params)
       redirect_to book_path(@book.id),notice:"Book was successfully updated."
     else
       render :edit
