@@ -38,7 +38,7 @@ class BooksController < ApplicationController
     book=Book.find(params[:id])
     book.destroy
     #リダイレクトと同時にフラッシュメッセージを表示
-    redirect_to books_path(book.id),alert:'Book was successfully destroyed.'
+    redirect_to books_path,alert:'Book was successfully destroyed.'
   end
 
   private #ストロングパラメータ

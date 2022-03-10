@@ -46,10 +46,6 @@ td{
   margin-bottom: 10px;
 }
 
-.alert{
-  color:green;
-}
-
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
@@ -57,3 +53,6 @@ p, ol, ul, td {
   margin: 33px;
 }
 
+.actions{
+  color:green;
+}
